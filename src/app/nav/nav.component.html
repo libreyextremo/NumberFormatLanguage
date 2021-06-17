@@ -1,0 +1,28 @@
+<p>Locale: {{ localeSetting }}</p>
+<p>Currency code: {{ currencyCodeSetting }}</p>
+<br>
+<select class="custom-select"
+  (change)="changeLang($event.target.value)">
+  <option value="ar-MA" [selected] = "localeSetting == 'ar-MA'"> Arabic - Morocco (ar-MA)</option>
+  <option value="bg-BG" [selected] = "localeSetting == 'bg-BG'"> Bulgarian - Bulgaria (bg-BG)</option>
+  <option value="de-DE" [selected] = "localeSetting == 'de-DE'"> German - Germany (de-DE)</option>
+  <option value="en-US" [selected] = "localeSetting == 'en-US'"> English - USA (en-US)</option>
+  <option value="es-CO" [selected] = "localeSetting == 'es-CO'"> Spanish - Colombia (es-CO)</option>
+  <option value="es-ES" [selected] = "localeSetting == 'es-ES'"> Spanish - Spain (es-ES)</option>
+  <option value="fr-FR" [selected] = "localeSetting == 'fr-FR'"> French - France (fr-FR)</option>
+  <option value="lt-LT" [selected] = "localeSetting == 'lt-LT'"> Lithuanian - Lithuania(lt-LT)</option>
+  <option value="nb-NO" [selected] = "localeSetting == 'nb-NO'"> Norwegian - Norway (nb-NO)</option>
+  <option value="pt-PT" [selected] = "localeSetting == 'pt-PT'"> Portuguese - Portugal (pt-PT)</option>
+  <option value="sv-SE" [selected] = "localeSetting == 'sv-SE'"> Swedish - Sweden (sv-SE)</option>
+</select>
+<br><br><br><br>
+<p>Price: {{ price }} (No format)</p>
+<p>Price: {{ price | currency:currencyCodeSetting  }}</p>
+<input [ngModel]="price | currency:currencyCodeSetting:true"
+       (ngModelChange)="price=currencyInputChanged($event)"/>
+<br><br><br><br>
+<p>- <a href="https://stackoverflow.com/questions/48321610/angular-4-how-to-use-currency-pipe-in-input-type">Additional explanation about ngModelChange</a></p>
+<p>- <a href="https://stackoverflow.com/questions/58408926/dynamically-change-the-locale-in-angular-7-at-runtime-without-having-to-reload-t
+">More info about how to change dinamically</a></p>
+<p>- <a href="https://en.wikipedia.org/wiki/ISO_4217">Currency: list of codes</a></p>
+<p>- <a href="http://www.lingoes.net/en/translator/langcode.htm">See ISO language Code Table</a></p>
